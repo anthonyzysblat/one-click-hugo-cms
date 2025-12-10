@@ -7,22 +7,94 @@
     <link href="{{ relURL . }}" rel="stylesheet">
   {{ end }}
 
-	<meta charset="utf-8">
-	<meta http-equiv="x-ua-compatible" content="ie=edge">
+  <meta charset="utf-8">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
   <base href="{{ $.Site.BaseURL }}">
 
-	<link href="https://fonts.googleapis.com/css?family=Nunito+Sans:400,700" rel="stylesheet">
+  <!-- Typography: Serif for titles, Sans-serif for body -->
+  <link href="https://fonts.googleapis.com/css2?family=Source+Serif+Pro:wght@400;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
 
-	<!-- Favicons -->
-	<link rel="apple-touch-icon" sizes="180x180" href="/img/apple-touch-icon.png">
-	<link rel="icon" type="image/png" href="/img/favicon-32x32.png" sizes="32x32">
-	<link rel="icon" type="image/png" href="/img/favicon-16x16.png" sizes="16x16">
-	<link rel="manifest" href="/manifest.json">
-	<link rel="mask-icon" href="/img/safari-pinned-tab.svg" color="#ff4400">
-	<meta name="theme-color" content="#fff">
+  <!-- GLOBAL DESIGN SYSTEM -->
+  <style>
+    :root {
+      --font-body: "Inter", -apple-system, BlinkMacSystemFont, sans-serif;
+      --font-title: "Source Serif Pro", Georgia, serif;
 
-  <!-- Open Graph Hugo https://gohugo.io/templates/internal/#open-graph -->
+      --color-text: #1a1a1a;
+      --color-subtle: #666;
+      --color-accent: #ff4400;
+      --max-width-reading: 680px;
+
+      --spacing-section: 5rem;
+      --spacing-paragraph: 1.3rem;
+    }
+
+    /* Reset + base */
+    body {
+      font-family: var(--font-body);
+      color: var(--color-text);
+      margin: 0;
+      padding: 0;
+      line-height: 1.65;
+      font-size: 18px;
+      background: #fff;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    h1, h2, h3, h4 {
+      font-family: var(--font-title);
+      font-weight: 600;
+      line-height: 1.2;
+      margin: 2.4rem 0 1rem 0;
+      color: #000;
+    }
+
+    p {
+      margin-bottom: var(--spacing-paragraph);
+      max-width: var(--max-width-reading);
+    }
+
+    .post-content img {
+      max-width: 100%;
+      height: auto;
+      border-radius: 4px;
+      margin: 2rem 0;
+    }
+
+    /* Article layout spacing */
+    main {
+      padding: 2rem 1.5rem;
+      max-width: 860px;
+      margin: 0 auto;
+    }
+
+    @media (min-width: 900px) {
+      main {
+        padding: 4rem 2rem;
+      }
+    }
+
+    /* Accent links */
+    a {
+      color: var(--color-accent);
+      text-decoration: none;
+      transition: 0.2s ease;
+    }
+
+    a:hover {
+      opacity: 0.75;
+    }
+
+  </style>
+
+  <!-- Favicons -->
+  <link rel="apple-touch-icon" sizes="180x180" href="/img/apple-touch-icon.png">
+  <link rel="icon" type="image/png" href="/img/favicon-32x32.png" sizes="32x32">
+  <link rel="icon" type="image/png" href="/img/favicon-16x16.png" sizes="16x16">
+  <link rel="manifest" href="/manifest.json">
+  <meta name="theme-color" content="#ffffff">
+
   {{ template "_internal/opengraph.html" . }}
 
   {{ if .IsHome }}
