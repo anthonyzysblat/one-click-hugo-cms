@@ -1,13 +1,25 @@
 {{ define "main" }}
 
-{{ partial "jumbotron" (dict "imageUrl" .Params.image "title" .Title "subtitle" .Params.subtitle) }}
+<section class="homepage-hero">
+  <div class="container">
+    {{ .Content }}
+  </div>
+</section>
 
-{{ partial "short-text" .Params.blurb}}
-
-{{ partial "2-up" .Params }}
-
-{{ partial "text-and-image" (dict "heading" .Params.values.heading "text" .Params.values.text "buttonText" "Read more" "buttonLink" "/values") }}
-
-{{ partial "blog" . }}
+<section class="homepage-posts">
+  <div class="container posts-grid">
+    {{ range first 12 (where .Site.RegularPages "Type" "post") }}
+      <article class="post-card">
+        <a href="{{ .RelPermalink }}">
+          {{ with .Params.image }}
+            <img src="{{ . }}" alt="{{ $.Title }}" class="post-card-image">
+          {{ end }}
+          <h2 class="post-card-title">{{ .Title }}</h2>
+          <p class="post-card-subtitle">{{ .Params.subtitle }}</p>
+        </a>
+      </article>
+    {{ end }}
+  </div>
+</section>
 
 {{ end }}
