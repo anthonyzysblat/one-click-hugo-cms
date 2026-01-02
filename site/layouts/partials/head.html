@@ -1,5 +1,14 @@
 <head>
 
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-6RJ1XMJTKY"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-6RJ1XMJTKY', { anonymize_ip: true });
+  </script>
+
   <title>{{ .Title }} | {{ $.Site.Title }}</title>
 
   {{ $stylesheet := .Site.Data.webpack.main }}
@@ -94,15 +103,7 @@
   <link rel="icon" type="image/png" href="/img/favicon-16x16.png" sizes="16x16">
   <link rel="manifest" href="/manifest.json">
   <meta name="theme-color" content="#ffffff">
-<!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-6RJ1XMJTKY"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
 
-  gtag('config', 'G-6RJ1XMJTKY');
-</script>
   {{ template "_internal/opengraph.html" . }}
 
   {{ if .IsHome }}
