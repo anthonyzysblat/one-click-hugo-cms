@@ -1,25 +1,21 @@
-{{ define "main" }}
-
-<section class="homepage-hero">
-  <div class="container">
-    {{ .Content }}
-  </div>
-</section>
-
 <section class="homepage-posts">
-  <div class="container posts-grid">
-    {{ range first 12 (where .Site.RegularPages "Type" "post") }}
-      <article class="post-card">
-        <a href="{{ .RelPermalink }}">
-          {{ with .Params.image }}
-            <img src="{{ . }}" alt="{{ $.Title }}" class="post-card-image">
-          {{ end }}
-          <h2 class="post-card-title">{{ .Title }}</h2>
-          <p class="post-card-subtitle">{{ .Params.subtitle }}</p>
-        </a>
-      </article>
-    {{ end }}
-  </div>
-</section>
 
-{{ end }}
+  <h2>Long Reads</h2>
+  {{ range first 10 (where .Site.RegularPages "Params.length" "long") }}
+    <article class="post-card">
+      <a href="{{ .RelPermalink }}">
+        <h3>{{ .Title }}</h3>
+      </a>
+    </article>
+  {{ end }}
+
+  <h2>Short Pieces</h2>
+  {{ range first 5 (where .Site.RegularPages "Params.length" "short") }}
+    <article class="post-card">
+      <a href="{{ .RelPermalink }}">
+        <h3>{{ .Title }}</h3>
+      </a>
+    </article>
+  {{ end }}
+
+</section>
